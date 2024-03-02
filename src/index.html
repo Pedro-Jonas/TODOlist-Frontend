@@ -17,7 +17,7 @@
             </div>
 
             <div id="creatFormBox">
-                <form>
+                <form onsubmit="creatNewTask()">
                     <fieldset>
                         <div class="inputBox">
                             <input type="text" name="nome" id="name" value="" placeholder="Nome" required  />
@@ -35,7 +35,7 @@
                         <br/>
 
                         <div class="inputBox">
-                            <input type="number" name="priority" id="date" min="1" max="5" placeholder="Prioridade"  required  />
+                            <input type="number" name="priority" id="priority" min="1" max="5" placeholder="Prioridade"  required  />
                         </div>
                         <br/>
 
@@ -54,60 +54,6 @@
             <div class="column todo">
                 <div class="type">
                     <h2>ToDo</h2>
-                </div>
-                <div class="task">
-                    <div class="topTask">
-                        <ion-icon name="create"></ion-icon>
-                        <ion-icon name="close-circle"></ion-icon>
-                    </div>
-
-                    <div class="contentTask">
-                        <h3 class="name">task1</h3>
-                        <p>Categoria: importante</p>
-                        <p>prioridade: 5</p>
-                        <p>
-                            "descrição da minha task"
-                        </p>
-                        <p>Data de entrega- 03/03/2024 12:00</p>
-                    </div>
-                
-                    <div class="bottomTask">
-                        <ion-icon name="arrow-round-forward"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="taskEdit">
-                    <form>
-                        <fieldset>
-                            <div class="inputEditBox">
-                                <input type="text" name="nome" id="nameEdit" value="task1" placeholder="Nome" required  />
-                            </div>
-                            <br/>
-    
-                            <div class="inputEditBox">
-                                <input type="text" name="description" id="descriptionEdit" value="descrição da minha task" placeholder="Descrição"  required  />
-                            </div>
-                            <br/>
-    
-                            <div class="inputEditBox">
-                                <input type="datetime-local" name="dateTask" id="dateTaskEdit" value="" required />
-                            </div>
-                            <br/>
-    
-                            <div class="inputEditBox">
-                                <input type="number" name="priority" id="dateEdit" min="1" max="5" value=5 placeholder="Prioridade"  required  />
-                            </div>
-                            <br/>
-    
-                            <div class="inputEditBox">
-                                <input type="text" name="category" id="categoryEdit" value="importante" placeholder="Categoria"  required  />
-                            </div>
-                            <br/>
-    
-                            <input type="submit" name="submit" id="submit" value="Atualizar a Task!">
-                            <button>voltar</button>
-                        </fieldset>
-                    </form>  
                 </div>
             </div>
             <div class="column doing">
