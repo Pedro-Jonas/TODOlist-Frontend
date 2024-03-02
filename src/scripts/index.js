@@ -1,7 +1,7 @@
 const tasks = JSON.parse(localStorage.getItem("tasks"))
     
 for(let task of tasks) {
-    console.log(task.name)
+
     if(task.status == "todo") {
         createTodoTask(task)
     } else if (task.status == "doing"){
@@ -22,13 +22,14 @@ function showCreatTask () {
 }
 
 function creatNewTask () {
+
     const newTask = {
-        name: document.querySelector("#creatFormBox #name").value,
+        name: document.querySelector("#creatFormBox #name").value.split(" ").join(),
         description: document.querySelector("#creatFormBox #description").value,
         date: document.querySelector("#creatFormBox #dateTask").value,
         priority: document.querySelector("#creatFormBox #priority").value,
         category: document.querySelector("#creatFormBox #category").value,
-        status: "done"
+        status: "todo"
     };
 
     if (localStorage.getItem("tasks") == null) {
@@ -40,8 +41,32 @@ function creatNewTask () {
     }
 }
 
+function moveToDoing(name) {
+    for(let task of tasks) {
+        if(task.name == name) {
+            task.status = "doing"
+            break
+        }
+    } 
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    window.location.reload();
+}
+
+function moveToDone(name) {
+    for(let task of tasks) {
+        if(task.name == name) {
+            task.status = "done"
+            break
+        }
+    } 
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    window.location.reload();
+}
+
 function createTodoTask(task) {
+
     const column = document.querySelector(".todo") 
+
     column.innerHTML += `
     <div class="task">
         <div class="topTask">
@@ -57,8 +82,8 @@ function createTodoTask(task) {
             <p>Data de entrega- ${task.date}</p>
         </div>  
 
-        <div class="bottomTask">
-            <ion-icon name="arrow-round-forward"></ion-icon>
+        <div class="bottomTask" >
+            <ion-icon onclick="moveToDoing(id)" id=${task.name} name="arrow-round-forward"></ion-icon>
         </div>
     </div>
 
@@ -99,7 +124,9 @@ function createTodoTask(task) {
 }
 
 function createDoingTask(task) {
+
     const column = document.querySelector(".doing")
+
     column.innerHTML += `
     <div class="task">
         <div class="topTask">
@@ -116,7 +143,7 @@ function createDoingTask(task) {
         </div>  
 
         <div class="bottomTask">
-            <ion-icon name="checkbox"></ion-icon>
+            <ion-icon onclick="moveToDone(id)" id=${task.name}  name="checkbox"></ion-icon>
         </div>
     </div>
 
@@ -157,7 +184,9 @@ function createDoingTask(task) {
 }
 
 function createDoneTask(task) {
+
     const column = document.querySelector(".done")
+
     column.innerHTML += `
     <div class="task">
         <div class="topTask">
