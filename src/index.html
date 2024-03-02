@@ -2,16 +2,233 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" href="./styles/styles.css">
         <link rel="stylesheet" href="./styles/reset.css">
+        <link rel="stylesheet" href="./styles/styles.css">
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
         <title>TODOlist</title>
     </head>
     <body>
         <div class="header">
-            <h1>TODOlist</h1>
+            <h1>ToDoList</h1>
         </div>
         <div class="creatTask">
+            <div class="addButton" onclick=""  >
+                Adicione aqui sua nova task!
+            </div>
+
+            <div class="creatFormBox">
+                <form>
+                    <fieldset>
+                        <div class="inputBox">
+                            <input type="text" name="nome" id="name" value="" placeholder="Nome" required  />
+                        </div>
+                        <br/>
+
+                        <div class="inputBox">
+                            <input type="text" name="description" id="description" value="" placeholder="Descrição"  required  />
+                        </div>
+                        <br/>
+
+                        <div class="inputBox">
+                            <input type="datetime-local" name="dateTask" id="dateTask" value="" required />
+                        </div>
+                        <br/>
+
+                        <div class="inputBox">
+                            <input type="number" name="priority" id="date" min="1" max="5" placeholder="Prioridade"  required  />
+                        </div>
+                        <br/>
+
+                        <div class="inputBox">
+                            <input type="text" name="category" id="category" value="" placeholder="Categoria"  required  />
+                        </div>
+                        <br/>
+
+                        <input type="submit" name="submit" id="submit" value="Criar Nova Task!">
+                        <button>voltar</button>
+                    </fieldset>
+                </form>                   
+            </div>
         </div>
+        <div class="columns">
+            <div class="column todo">
+                <div class="type">
+                    <h2>ToDo</h2>
+                </div>
+                <div class="task">
+                    <div class="topTask">
+                        <ion-icon name="create"></ion-icon>
+                        <ion-icon name="close-circle"></ion-icon>
+                    </div>
+
+                    <div class="contentTask">
+                        <h3 class="name">task1</h3>
+                        <p>Categoria: importante</p>
+                        <p>prioridade: 5</p>
+                        <p>
+                            "descrição da minha task"
+                        </p>
+                        <p>Data de entrega- 03/03/2024 12:00</p>
+                    </div>
+                
+                    <div class="bottomTask">
+                        <ion-icon name="arrow-round-forward"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="taskEdit">
+                    <form>
+                        <fieldset>
+                            <div class="inputEditBox">
+                                <input type="text" name="nome" id="nameEdit" value="task1" placeholder="Nome" required  />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="text" name="description" id="descriptionEdit" value="descrição da minha task" placeholder="Descrição"  required  />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="datetime-local" name="dateTask" id="dateTaskEdit" value="" required />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="number" name="priority" id="dateEdit" min="1" max="5" value=5 placeholder="Prioridade"  required  />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="text" name="category" id="categoryEdit" value="importante" placeholder="Categoria"  required  />
+                            </div>
+                            <br/>
+    
+                            <input type="submit" name="submit" id="submit" value="Atualizar a Task!">
+                            <button>voltar</button>
+                        </fieldset>
+                    </form>  
+                </div>
+            </div>
+            <div class="column doing">
+                <div class="type">
+                    <h2>Doing</h2>
+                </div>
+                <div class="task">
+                    <div class="topTask">
+                        <ion-icon name="create"></ion-icon>
+                        <ion-icon name="close-circle"></ion-icon>
+                    </div>
+
+                    <div class="contentTask">
+                        <h3>task2</h3>
+                        <p>Categoria: importante</p>
+                        <p>prioridade: 5</p>
+                        <p>
+                            "descrição da minha task"
+                        </p>
+                        <p>Data de entrega- 03/03/2024 12:00</p>
+                    </div>
+                
+                    <div class="bottomTask">
+                        <ion-icon name="checkbox"></ion-icon>
+                    </div>
+                </div>
+                <div class="taskEdit">
+                    <form>
+                        <fieldset>
+                            <div class="inputEditBox">
+                                <input type="text" name="nome" id="nameEdit" value="task1" placeholder="Nome" required  />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="text" name="description" id="descriptionEdit" value="descrição da minha task" placeholder="Descrição"  required  />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="datetime-local" name="dateTask" id="dateTaskEdit" value="" required />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="number" name="priority" id="dateEdit" min="1" max="5" value=5 placeholder="Prioridade"  required  />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="text" name="category" id="categoryEdit" value="importante" placeholder="Categoria"  required  />
+                            </div>
+                            <br/>
+    
+                            <input type="submit" name="submit" id="submit" value="Atualizar a Task!">
+                            <button>voltar</button>
+                        </fieldset>
+                    </form>  
+                </div>
+            </div>
+            
+            <div class="column done">
+                <div class="type">
+                    <h2>Done</h2>
+                </div>
+                <div class="task">
+                    <div class="topTask">
+                        <ion-icon name="create"></ion-icon>
+                        <ion-icon name="close-circle"></ion-icon>
+                    </div>
+
+                    <div class="contentTask">
+                        <h3>task3</h3>
+                        <p>Categoria: importante</p>
+                        <p>prioridade: 5</p>
+                        <p>
+                            "descrição da minha task"
+                        </p>
+                        <p>Data de entrega- 03/03/2024 12:00</p>
+                    </div>
+                
+                    <div class="bottomTask">
+                        <ion-icon class="checkButton" name="checkbox"></ion-icon>
+                    </div>
+                </div>
+                <div class="taskEdit">
+                    <form>
+                        <fieldset>
+                            <div class="inputEditBox">
+                                <input type="text" name="nome" id="nameEdit" value="task1" placeholder="Nome" required  />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="text" name="description" id="descriptionEdit" value="descrição da minha task" placeholder="Descrição"  required  />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="datetime-local" name="dateTask" id="dateTaskEdit" value="" required />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="number" name="priority" id="dateEdit" min="1" max="5" value=5 placeholder="Prioridade"  required  />
+                            </div>
+                            <br/>
+    
+                            <div class="inputEditBox">
+                                <input type="text" name="category" id="categoryEdit" value="importante" placeholder="Categoria"  required  />
+                            </div>
+                            <br/>
+    
+                            <input type="submit" name="submit" id="submit" value="Atualizar a Task!">
+                            <button>voltar</button>
+                        </fieldset>
+                    </form>  
+                </div>
+            </div>    
+        </div>
+
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>    
     </body>
 </html>
