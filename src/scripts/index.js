@@ -3,10 +3,9 @@ const tasks = JSON.parse(localStorage.getItem("tasks"))
 for(let task of tasks) {
     console.log(task.name)
     if(task.status == "todo") {
-        console.log("aqui")
         createTodoTask(task)
     } else if (task.status == "doing"){
-        console.log("chamar creatDoingTask")
+        createDoingTask(task)
     } else {
         console.log("chamar creatDoneTask")
     }
@@ -29,7 +28,7 @@ function creatNewTask () {
         date: document.querySelector("#creatFormBox #dateTask").value,
         priority: document.querySelector("#creatFormBox #priority").value,
         category: document.querySelector("#creatFormBox #category").value,
-        status: "todo"
+        status: "doing"
     };
 
     if (localStorage.getItem("tasks") == null) {
@@ -60,6 +59,64 @@ function createTodoTask(task) {
 
         <div class="bottomTask">
             <ion-icon name="arrow-round-forward"></ion-icon>
+        </div>
+    </div>
+
+    <div class="taskEdit">
+        <form>
+            <fieldset>
+                <div class="inputEditBox">
+                    <input type="text" name="nome" id="nameEdit" value="${task.name}" placeholder="Nome" required  />
+                </div>
+                <br/>
+
+                <div class="inputEditBox">
+                    <input type="text" name="description" id="descriptionEdit" value="${task.description}" placeholder="Descrição"  required  />
+                </div>
+                <br/>
+
+                <div class="inputEditBox">
+                    <input type="datetime-local" name="dateTask" id="dateTaskEdit" value="${task.date}" required />
+                </div>
+                <br/>
+
+                <div class="inputEditBox">
+                    <input type="number" name="priority" id="dateEdit" min="1" max="5" value=${task.priority} placeholder="Prioridade"  required  />
+                </div>
+                <br/>
+
+                <div class="inputEditBox">
+                    <input type="text" name="category" id="categoryEdit" value=${task.category} placeholder="Categoria"  required  />
+                </div>
+                <br/>
+
+                <input type="submit" name="submit" id="submit" value="Atualizar a Task!">
+                <button>voltar</button>
+            </fieldset>
+        </form>  
+    </div>
+    `
+}
+
+function createDoingTask(task) {
+    const column = document.querySelector(".doing")
+    column.innerHTML += `
+    <div class="task">
+        <div class="topTask">
+            <ion-icon name="create"></ion-icon>
+            <ion-icon name="close-circle"></ion-icon>
+        </div>
+
+        <div class="contentTask">
+            <h3 class="name">${task.name}</h3>
+            <p>Categoria: ${task.category}</p>
+            <p>prioridade: ${task.priority}</p>
+            <p>${task.description}</p>
+            <p>Data de entrega- ${task.date}</p>
+        </div>  
+
+        <div class="bottomTask">
+            <ion-icon name="checkbox"></ion-icon>
         </div>
     </div>
 
