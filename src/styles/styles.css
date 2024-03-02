@@ -44,7 +44,19 @@ p {
     justify-content: center;
 }
 
-.creatFormBox {
+#addButton {
+    text-align: center;
+    padding-top: 10px;
+    width: 300px;
+    height: 40px;
+    border-radius: 12px;
+    background-color: #514B4B;
+    color: beige;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#creatFormBox {
     background-color: #514B4B;
     border-radius: 15px;
     padding: 15px;
@@ -140,18 +152,6 @@ ion-icon {
 
 .checkButton {
     color: green;
-}
-
-.addButton {
-    text-align: center;
-    padding-top: 10px;
-    width: 300px;
-    height: 40px;
-    border-radius: 12px;
-    background-color: #514B4B;
-    color: beige;
-    font-size: 15px;
-    font-weight: bold;
 }
 
 
