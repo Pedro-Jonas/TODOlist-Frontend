@@ -11,7 +11,3 @@ TodoList simplifica a gestão do seu dia a dia, permitindo que você se concentr
 1. Html
 2. CSS
 3. Javascript
-
-## Tecnologias Usadas no BackEnd
-1. Java
-
