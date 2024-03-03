@@ -25,7 +25,15 @@ h3 {
     font-weight: bold;
 }
 
-p {
+h4 {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #2e2d30;
+    margin-bottom: 10px;
+}
+
+p {  
     margin-bottom: 5px;
 }
 
@@ -167,7 +175,7 @@ ion-icon {
     letter-spacing: 1px;
 }
 
-#submit, button {
+.submit, button {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     height: 30px;
@@ -177,13 +185,28 @@ ion-icon {
     border-radius: 5px;
 }
 
+.radioBox {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #2e2d30;
+    display: flex;
+    label {
+        margin-right: 3px;
+    }
+}
+
+.radioBox input {
+    width: 25px;
+    margin-right: 40px;
+}
+
 .done {
     h3, p {
         text-decoration: line-through;
     }
 }
 
-#submit {
+.submit {
     margin-right: 25px;
 }
 

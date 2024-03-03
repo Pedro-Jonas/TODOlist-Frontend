@@ -30,11 +30,6 @@
                         <br/>
 
                         <div class="inputBox">
-                            <input type="datetime-local" name="dateTask" id="dateTask" value="" required />
-                        </div>
-                        <br/>
-
-                        <div class="inputBox">
                             <input type="number" name="priority" id="priority" min="1" max="5" placeholder="Prioridade"  required  />
                         </div>
                         <br/>
@@ -44,7 +39,12 @@
                         </div>
                         <br/>
 
-                        <input type="submit" name="submit" id="submit" value="Criar Nova Task!">
+                        <div class="inputBox">
+                            <input type="datetime-local" name="dateTask" id="dateTask" value="" required />
+                        </div>
+                        <br/>
+
+                        <input type="submit" name="submit" class="submit" value="Criar Nova Task!">
                         <button onclick="showCreatTask()">voltar</button>
                     </fieldset>
                 </form>                   

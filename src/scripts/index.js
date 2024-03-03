@@ -69,14 +69,53 @@ function deleteTask (name) {
     window.location.reload();
 }
 
+
+function showEditTask (element) {
+    document.querySelector(`.task#${element.id}`).style.display = "none";
+    document.querySelector(`.taskEdit#${element.id}`).style.display = "block";
+}
+
+function showNormalTask (element) {
+    document.querySelector(`.task#${element.id}`).style.display = "block";
+    document.querySelector(`.taskEdit#${element.id}`).style.display = "none";
+}
+
+function editTask (name) {
+    const newTask = {
+        name: document.querySelector(`.taskEdit#${name} #nameEdit`).value,
+        description: document.querySelector(`.taskEdit#${name} #descriptionEdit`).value,
+        date: document.querySelector(`.taskEdit#${name} #dateTaskEdit`).value,
+        priority: document.querySelector(`.taskEdit#${name} #priorityEdit`).value,
+        category: document.querySelector(`.taskEdit#${name} #categoryEdit`).value,
+        status: document.querySelector(`.taskEdit#${name} input[name="status"]:checked`).value
+    };
+
+
+    for(let task of tasks) {
+        if(task.name.split(" ").join("") == name) {
+            task.name = newTask.name;
+            task.description = newTask.description;
+            task.date = newTask.date;
+            task.priority = newTask.priority;
+            task.category = newTask.category;
+            task.status = newTask.status;
+            break
+        }
+    } 
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    window.location.reload();
+}
+
+
 function createTodoTask(task) {
 
     const column = document.querySelector(".todo") 
 
     column.innerHTML += `
-    <div class="task">
+    <div class="task" id=${task.name.split(" ").join("")} >
         <div class="topTask">
-            <ion-icon name="create"></ion-icon>
+            <ion-icon onclick="showEditTask(this)" id=${task.name.split(" ").join("")} name="create"></ion-icon>
             <ion-icon onclick="deleteTask(id)" id=${task.name.split(" ").join("")} name="close-circle"></ion-icon>
         </div>
 
@@ -93,7 +132,7 @@ function createTodoTask(task) {
         </div>
     </div>
 
-    <div class="taskEdit">
+    <div class="taskEdit" id=${task.name.split(" ").join("")} >
         <form>
             <fieldset>
                 <div class="inputEditBox">
@@ -112,7 +151,7 @@ function createTodoTask(task) {
                 <br/>
 
                 <div class="inputEditBox">
-                    <input type="number" name="priority" id="dateEdit" min="1" max="5" value=${task.priority} placeholder="Prioridade"  required  />
+                    <input type="number" name="priority" id="priorityEdit" min="1" max="5" value=${task.priority} placeholder="Prioridade"  required  />
                 </div>
                 <br/>
 
@@ -121,8 +160,23 @@ function createTodoTask(task) {
                 </div>
                 <br/>
 
-                <input type="submit" name="submit" id="submit" value="Atualizar a Task!">
-                <button>voltar</button>
+                <div class="inputEditBox">
+                    <h4>Status</h4>
+                    <div class="radioBox" >
+                        <label for="todo">ToDo</label>
+                        <input type="radio" name="status" id="todo" value="todo" placeholder="Categoria"  required  />
+
+                        <label for="doing">Doing</label>
+                        <input type="radio" name="status" id="doing" value="doing" placeholder="Categoria"  required  />
+
+                        <label for="todo">Done</label>
+                        <input type="radio" name="status" id="done" value="done" placeholder="Categoria"  required  />
+                    </div>
+                </div>
+                <br/>
+
+                <input onclick="editTask(id)" type="submit" name="submit" id=${task.name.split(" ").join("")} class="submit" value="Atualizar a Task!">
+                <button onclick="showNormalTask(this)" id=${task.name.split(" ").join("")} >voltar</button>
             </fieldset>
         </form>  
     </div>
@@ -134,10 +188,10 @@ function createDoingTask(task) {
     const column = document.querySelector(".doing")
 
     column.innerHTML += `
-    <div class="task">
+    <div class="task" id=${task.name.split(" ").join("")}>
         <div class="topTask">
-            <ion-icon name="create"></ion-icon>
-            <ion-icon name="close-circle"></ion-icon>
+            <ion-icon onclick="showEditTask(this)" id=${task.name.split(" ").join("")} name="create"></ion-icon>
+            <ion-icon onclick="deleteTask(id)" id=${task.name.split(" ").join("")} name="close-circle"></ion-icon>
         </div>
 
         <div class="contentTask">
@@ -153,7 +207,7 @@ function createDoingTask(task) {
         </div>
     </div>
 
-    <div class="taskEdit">
+    <div class="taskEdit" id=${task.name.split(" ").join("")}>
         <form>
             <fieldset>
                 <div class="inputEditBox">
@@ -172,7 +226,7 @@ function createDoingTask(task) {
                 <br/>
 
                 <div class="inputEditBox">
-                    <input type="number" name="priority" id="dateEdit" min="1" max="5" value=${task.priority} placeholder="Prioridade"  required  />
+                    <input type="number" name="priority" id="priorityEdit" min="1" max="5" value=${task.priority} placeholder="Prioridade"  required  />
                 </div>
                 <br/>
 
@@ -181,8 +235,23 @@ function createDoingTask(task) {
                 </div>
                 <br/>
 
-                <input type="submit" name="submit" id="submit" value="Atualizar a Task!">
-                <button>voltar</button>
+                <div class="inputEditBox">
+                    <h4>Status</h4>
+                    <div class="radioBox" >
+                        <label for="todo">ToDo</label>
+                        <input type="radio" name="status" id="todo" value="todo" placeholder="Categoria"  required  />
+
+                        <label for="doing">Doing</label>
+                        <input type="radio" name="status" id="doing" value="doing" placeholder="Categoria"  required  />
+
+                        <label for="todo">Done</label>
+                        <input type="radio" name="status" id="done" value="done" placeholder="Categoria"  required  />
+                    </div>
+                </div>
+                <br/>
+
+                <input onclick="editTask(id)" type="submit" name="submit" id=${task.name.split(" ").join("")} class="submit" value="Atualizar a Task!">
+                <button onclick="showNormalTask(this)" id=${task.name.split(" ").join("")} >voltar</button>
             </fieldset>
         </form>  
     </div>
@@ -194,10 +263,10 @@ function createDoneTask(task) {
     const column = document.querySelector(".done")
 
     column.innerHTML += `
-    <div class="task">
+    <div class="task" id=${task.name.split(" ").join("")}>
         <div class="topTask">
-            <ion-icon name="create"></ion-icon>
-            <ion-icon name="close-circle"></ion-icon>
+            <ion-icon onclick="showEditTask(this)" id=${task.name.split(" ").join("")} name="create"></ion-icon>
+            <ion-icon onclick="deleteTask(id)" id=${task.name.split(" ").join("")} name="close-circle"></ion-icon>
         </div>
 
         <div class="contentTask">
@@ -213,7 +282,7 @@ function createDoneTask(task) {
         </div>
     </div>
 
-    <div class="taskEdit">
+    <div class="taskEdit" id=${task.name.split(" ").join("")} >
         <form>
             <fieldset>
                 <div class="inputEditBox">
@@ -232,7 +301,7 @@ function createDoneTask(task) {
                 <br/>
 
                 <div class="inputEditBox">
-                    <input type="number" name="priority" id="dateEdit" min="1" max="5" value=${task.priority} placeholder="Prioridade"  required  />
+                    <input type="number" name="priority" id="priorityEdit" min="1" max="5" value=${task.priority} placeholder="Prioridade"  required  />
                 </div>
                 <br/>
 
@@ -241,8 +310,23 @@ function createDoneTask(task) {
                 </div>
                 <br/>
 
-                <input type="submit" name="submit" id="submit" value="Atualizar a Task!">
-                <button>voltar</button>
+                <div class="inputEditBox">
+                    <h4>Status</h4>
+                    <div class="radioBox" >
+                        <label for="todo">ToDo</label>
+                        <input type="radio" name="status" id="todo" value="todo" placeholder="Categoria"  required  />
+
+                        <label for="doing">Doing</label>
+                        <input type="radio" name="status" id="doing" value="doing" placeholder="Categoria"  required  />
+
+                        <label for="todo">Done</label>
+                        <input type="radio" name="status" id="done" value="done" placeholder="Categoria"  required  />
+                    </div>
+                </div>
+                <br/>
+
+                <input onclick="editTask(id)" type="submit" name="submit" id=${task.name.split(" ").join("")} class="submit" value="Atualizar a Task!">
+                <button onclick="showNormalTask(this)" id=${task.name.split(" ").join("")} >voltar</button>
             </fieldset>
         </form>  
     </div>
