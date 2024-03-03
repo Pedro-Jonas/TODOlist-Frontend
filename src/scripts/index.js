@@ -1,6 +1,6 @@
 const tasks = JSON.parse(localStorage.getItem("tasks"))
     
-for(let task of tasks) {
+for (let task of tasks) {
 
     if(task.status == "todo") {
         createTodoTask(task)
@@ -41,7 +41,7 @@ function creatNewTask () {
     }
 }
 
-function moveToDoing(name) {
+function moveToDoing (name) {
     for(let task of tasks) {
         if(task.name.split(" ").join("") == name) {
             task.status = "doing"
@@ -52,7 +52,7 @@ function moveToDoing(name) {
     window.location.reload();
 }
 
-function moveToDone(name) {
+function moveToDone (name) {
     for(let task of tasks) {
         if(task.name.split(" ").join("") == name) {
             task.status = "done"
@@ -60,6 +60,12 @@ function moveToDone(name) {
         }
     } 
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    window.location.reload();
+}
+
+function deleteTask (name) {
+    const deleteTask = tasks.filter(task => task.name.split(" ").join("") != name)
+    localStorage.setItem("tasks", JSON.stringify(deleteTask));
     window.location.reload();
 }
 
@@ -71,7 +77,7 @@ function createTodoTask(task) {
     <div class="task">
         <div class="topTask">
             <ion-icon name="create"></ion-icon>
-            <ion-icon name="close-circle"></ion-icon>
+            <ion-icon onclick="deleteTask(id)" id=${task.name.split(" ").join("")} name="close-circle"></ion-icon>
         </div>
 
         <div class="contentTask">
