@@ -24,7 +24,7 @@ function showCreatTask () {
 function creatNewTask () {
 
     const newTask = {
-        name: document.querySelector("#creatFormBox #name").value.split(" ").join(),
+        name: document.querySelector("#creatFormBox #name").value,
         description: document.querySelector("#creatFormBox #description").value,
         date: document.querySelector("#creatFormBox #dateTask").value,
         priority: document.querySelector("#creatFormBox #priority").value,
@@ -43,7 +43,7 @@ function creatNewTask () {
 
 function moveToDoing(name) {
     for(let task of tasks) {
-        if(task.name == name) {
+        if(task.name.split(" ").join("") == name) {
             task.status = "doing"
             break
         }
@@ -54,7 +54,7 @@ function moveToDoing(name) {
 
 function moveToDone(name) {
     for(let task of tasks) {
-        if(task.name == name) {
+        if(task.name.split(" ").join("") == name) {
             task.status = "done"
             break
         }
@@ -83,7 +83,7 @@ function createTodoTask(task) {
         </div>  
 
         <div class="bottomTask" >
-            <ion-icon onclick="moveToDoing(id)" id=${task.name} name="arrow-round-forward"></ion-icon>
+            <ion-icon onclick="moveToDoing(id)" id=${task.name.split(" ").join("")} name="arrow-round-forward"></ion-icon>
         </div>
     </div>
 
@@ -143,7 +143,7 @@ function createDoingTask(task) {
         </div>  
 
         <div class="bottomTask">
-            <ion-icon onclick="moveToDone(id)" id=${task.name}  name="checkbox"></ion-icon>
+            <ion-icon onclick="moveToDone(id)" id=${task.name.split(" ").join("")}  name="checkbox"></ion-icon>
         </div>
     </div>
 
